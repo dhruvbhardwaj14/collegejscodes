@@ -14,4 +14,5 @@ console.log("Tut1");
 // console.assert(condition,statement if true);
 // console.assert(1<2,"Not possible");//no error
 // console.assert(3<2,"Not possible");//assertion error
-// console.error("this is an error");//direct error
+console.error("this is an error");//direct error
+

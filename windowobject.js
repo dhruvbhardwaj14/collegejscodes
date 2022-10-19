@@ -10,8 +10,8 @@ console.log("DOM Window objects");
 //confirm-true or false boolean assigned
 // confirm("Are you sure you want to exit!")
 
-// let b=window.document;//gives html files allocated to it
-// console.log(b);
+let b=window.document;//gives html files allocated to it
+console.log(b);
 
 // c=window.innerHeight;//height of opened window 
 // console.log(c);

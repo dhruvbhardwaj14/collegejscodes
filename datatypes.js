@@ -33,6 +33,7 @@ let stMarks = {
     Shubham: 36,
     Rohan: 34
 }
+console.log(stMarks);
 console.log( typeof stMarks);
 
 function findName() {

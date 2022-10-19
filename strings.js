@@ -22,7 +22,7 @@ console.log(html);
 // console.log(html.endsWith('dsfsdfd'));
 // console.log(html.includes(' fg'));
 // console.log(html.substring(1,6));
-// console.log(html.slice(0, 4))
+console.log(html.slice(0, 4))
 // console.log(html.split('>'));
 // console.log(html.replace('this', 'it'));
 
