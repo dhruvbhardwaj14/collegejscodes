@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Information Form</title>
+  <style>
+    /* Add some basic styling for better presentation */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    form {
+      max-width: 400px;
+      margin: auto;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #customerData {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Customer Information Form</h1>
+
+  <form id="customerForm">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" required>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required>
+
+    <label for="birthday">Birthday:</label>
+    <input type="date" id="birthday" name="birthday" required>
+
+    <label for="foodPreferences">Food Preferences:</label>
+    <select id="foodPreferences" name="foodPreferences" required>
+      <option value="vegetarian">Vegetarian</option>
+      <option value="non-vegetarian">Non-Vegetarian</option>
+    </select>
+
+    <button type="button" onclick="submitForm()">Submit</button>
+  </form>
+
+  <div id="customerData"></div>
+
+  <script>
+    function submitForm() {
+      // Get form values
+      const firstName = document.getElementById('firstName').value;
+      const lastName = document.getElementById('lastName').value;
+      const age = document.getElementById('age').value;
+      const birthday = document.getElementById('birthday').value;
+      const foodPreferences = document.getElementById('foodPreferences').value;
+
+      // Create Customer object
+      const customer = {
+        firstName,
+        lastName,
+        age,
+        birthday,
+        foodPreferences
+      };
+
+      // Convert Customer object to JSON
+      const customerJSON = JSON.stringify(customer);
+
+      // Print objects on the console
+      console.log('Customer Object:', customer);
+      console.log('Customer JSON:', customerJSON);
+
+      // Display customer data using AJAX
+      displayCustomerData(customerJSON);
+    }
+
+    function displayCustomerData(customerJSON) {
+      // Use AJAX to simulate fetching customer data
+      const xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          const responseData = JSON.parse(xhr.responseText);
+          document.getElementById('customerData').innerHTML = `
+            <h2>Customer Data</h2>
+            <p>${responseData.customer1}</p>
+            <p>${responseData.customer2}</p>
+          `;
+        }
+      };
+
+      // Simulate a delay of 1 second
+      setTimeout(() => {
+        // Send POST request with customer JSON data
+        xhr.open('POST', 'https://jsonplaceholder.typicode.com/posts', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(customerJSON);
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
